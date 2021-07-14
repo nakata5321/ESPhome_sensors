@@ -1,0 +1,41 @@
+esphome:
+  name: temperature_htu21
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: "CSI Robotics"
+  password: "csirobotics"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Temperature Htu21"
+    password: "hJHEnh8bEkFJ"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+# create I2C bridge
+i2c:
+  sda: 4
+  scl: 5
+  scan: True
+  id: bus_a
+
+
+
+# connect htu21d sensor
+sensor:
+  - platform: htu21d
+    temperature:
+      name: "Test Temperature"
+    humidity:
+      name: "test Humidity"
+    update_interval: 60s
